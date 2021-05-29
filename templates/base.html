@@ -1,0 +1,65 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}lib{% endblock %}
+
+
+{% block head %}
+{{ super() }}
+<link rel="shortcut icon" href="{{ url_for('static', filename='KaiXin.svg') }}" type="image/x-icon">
+<link rel="icon" href="{{ url_for('static', filename='KaiXin.svg') }}" type="image/x-icon">
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="../static/jquery/jquery-3.5.1.min.js"></script>
+<!-- 新 Bootstrap4 核心 CSS 文件 -->
+<link rel="stylesheet" href="../static/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+<!-- 最新的 Bootstrap4 核心 JavaScript 文件 -->
+<link rel="stylesheet" href="../static/bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.min.css">
+<script src="../static/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+<script src="../static/bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.min.js"></script>
+<script src="../static/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.fr.js"></script>
+{% endblock %}
+
+
+{% block navbar %}
+<div class="navbar navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{{ url_for('login') }}">图书馆座位预约</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="{{ url_for('auth_info') }}">关于作者</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+
+                <li><a href="{{ url_for('login') }}">Log In</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    {% for message in get_flashed_messages() %}
+    <div class="alert alert-warning">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{ message }}
+    </div>
+    {% endfor %}
+
+    {% block page_content %}{% endblock %}
+</div>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+
+{% endblock %}

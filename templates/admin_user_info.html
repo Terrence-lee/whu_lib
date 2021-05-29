@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}欢迎界面{% endblock %}
+
+{% block page_content %}
+
+
+
+
+
+
+
+<div class="col-lg-10">
+<h1>敬爱的管理员父亲，您好！欢迎查看用户的信息</h1>
+<table class="table table-striped">
+  <caption>用户信息</caption>
+
+  <thead>
+    <tr>
+      <th>账号</th>
+      <th>密码</th>
+      <th>权限码</th>
+      <th>预约数目</th>
+
+
+
+
+    </tr>
+  </thead>
+
+
+  <tbody>
+
+  {% for i in user %}
+    <tr>
+      <td >{{i[0]}}</td>
+      <td name="password">{{i[1]}}</td>
+      <td name="authid">{{i[2]}}</td>
+      <td>
+      <form action="/delete_user" method="post">
+        <input name="account" value={{i[0]}} hidden />
+        <button name="delete" type="submit" class="btn btn-default" value="delete" >删除</button>
+      </form>
+      </td>
+      <td>
+      <form action="/seat_info_uid" method="post">
+        <input name="uid" value={{i[0]}} hidden />
+        <button name="check" type="submit" class="btn btn-default" value="uid" >查看用户的座位</button>
+      </form>
+      </td>
+    </tr>
+  </form>
+{% endfor %}
+  </tbody>
+</table>
+</div>
+
+
+{% endblock %}

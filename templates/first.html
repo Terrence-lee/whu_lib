@@ -257,26 +257,7 @@
         </thead>
 
 
-  <tbody>
-
-  {% for i in user %}
-    <tr>
-      <td name="cancel_day">{{i[3]}}</td>
-      <td name="cancel_site">{{i[6]}}</td>
-      <td name="cancel_site">{{i[7]}}</td>
-      <td name="cancel_begintime">{{i[4]}}</td>
-      <td name="cancel_endtime">{{i[5]}}</td>
-      <td>
-      <form action="/cancel" method="post">
-        <input name="cancel_id" value={{i[0]}} hidden />
-        <button name="cancel" type="submit" class="btn btn-default" value="cancel" >取消</button>
-      </form>
-      </td>
-    </tr>
-
-{% endfor %}
-  </tbody>
-</table>
+    </table>
 </div>
 <script type="text/javascript" src="../static/js/result.js"></script>
 

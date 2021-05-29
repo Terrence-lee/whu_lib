@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Login{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <h1 >Login</h1>
+</div>
+<div class="col-md-5">
+    {{ wtf.quick_form(form) }}
+    <br>
+</div>
+<div >
+    <img id="img1" src="../static/login.webp">
+</div>
+<div >
+    <img id="img2" src="../static/login2.jpg">
+</div>
+
+<style>
+#img1
+  {
+  float:right;
+  }
+#img2
+  {
+  float:left;
+  }
+</style>
+{% endblock %}

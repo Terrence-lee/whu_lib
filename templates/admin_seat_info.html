@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}欢迎界面{% endblock %}
+
+{% block page_content %}
+<div class="input-group col-md-6" style="margin-top:0px positon:relative">
+  <form action="/seat_info_uid" method="post">
+       <input name="uid" type="text" class="form-control"placeholder="用户的学号" />
+            <span class="input-group-btn">
+               <button class="btn btn-info btn-search">学号查找</button>
+            </span>
+  </form>
+</div>
+
+<div class="input-group col-md-6" style="margin-top:0px positon:relative">
+  <form action="/seat_info_date" method="post">
+       <input name="date" type="text" class="form-control"placeholder="日期" />
+            <span class="input-group-btn">
+               <button class="btn btn-info btn-search">日期查找</button>
+            </span>
+  </form>
+</div>
+
+<div class="input-group col-md-6" style="margin-top:0px positon:relative">
+  <form action="/seat_info_seatid" method="post">
+       <input name="seatid" type="text" class="form-control"placeholder="座位id" />
+            <span class="input-group-btn">
+               <button class="btn btn-info btn-search">座位id查找</button>
+            </span>
+  </form>
+</div>
+
+<div class="input-group col-md-6" style="margin-top:0px positon:relative">
+  <form action="/seat_info_seatname" method="post">
+       <input name="seatname" type="text" class="form-control"placeholder="座位名" />
+            <span class="input-group-btn">
+               <button class="btn btn-info btn-search">座位名查找</button>
+            </span>
+  </form>
+</div>
+
+
+
+
+<div class="col-lg-10">
+<h1>敬爱的管理员父亲，您好！欢迎查看座位信息</h1>
+<table class="table table-striped">
+  <caption>座位信息</caption>
+
+  <thead>
+    <tr>
+      <th>用户id</th>
+      <th>座位id</th>
+      <th>日期</th>
+      <th>开始时间</th>
+      <th>结束时间</th>
+      <th>场馆</th>
+      <th>座位名</th>
+      <th>备选座位</th>
+    </tr>
+  </thead>
+
+
+  <tbody>
+
+  {% for i in user %}
+    <tr>
+      <td >{{i[1]}}</td>
+      <td >{{i[2]}}</td>
+      <td >{{i[3]}}</td>
+      <td >{{i[4]}}</td>
+      <td >{{i[5]}}</td>
+      <td >{{i[6]}}</td>
+      <td >{{i[7]}}</td>
+      <td >{{i[8]}}</td>
+      <td>
+      <form action="/delete_seat" method="post">
+        <input name="id" value={{i[0]}} hidden />
+        <button name="delete" type="submit" class="btn btn-default" value="delete" >删除</button>
+      </form>
+      </td>
+    </tr>
+  </form>
+{% endfor %}
+  </tbody>
+</table>
+</div>
+
+
+{% endblock %}
